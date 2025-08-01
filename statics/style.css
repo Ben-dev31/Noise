@@ -1,0 +1,32 @@
+body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #333;
+    }
+    header {
+      background-color: #0c2d48;
+      color: white;
+      padding: 1em 2em;
+    }
+    main {
+      padding: 2em;
+    }
+    section {
+      margin-bottom: 3em;
+    }
+    h2 {
+      color: #0c2d48;
+    }
+    audio {
+      display: block;
+      margin-top: 1em;
+    }
+    .audio-container {
+      background-color: #e8eff5;
+      padding: 1em;
+      border-radius: 8px;
+      margin-top: 1em;
+    }

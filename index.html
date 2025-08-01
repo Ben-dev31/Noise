@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Bruit et sa Génération</title>
+    <link rel="stylesheet" href="statics/style.css" />
+
+</head>
+<body>
+  <header>
+    <h1>Le Bruit et sa Génération par Ordinateur</h1>
+    <p>Par Benjamin Tchitche – Université d'Angers<br/>Équipe ImHorPhen, LARIS</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Le bruit correspond à l'ensemble des perturbations aléatoires, généralement indésirables, qui s'ajoutent à un signal utile.
+         Il est un élément clé de la physique, de l'ingénierie et même de la biologie, où il est essentiel pour la compréhension des
+          fluctuations intrinsèques des systèmes. Selon la classification établie, les origines de ce phénomène peuvent être thermiques, électroniques, acoustiques ou biologiques. 
+          Dans le cadre de notre analyse, nous avons procédé à une modélisation mathématique du bruit. Cette modélisation s'est faite à l'aide d'un processus stochastique, 
+          qui nous a permis de démontrer rigoureusement la nature aléatoire fondamentale de ce dernier.
+      </p>
+      <p>L'étymologie du terme anglais noise, qui signifie « bruit », remonte à l'ancien français noise, 
+        signifiant « querelle » ou « tumulte ». Ce terme est lui-même dérivé du latin nausea, qui désignait à l'origine 
+        le mal de mer ou un état de trouble, avant de signifier une agitation confuse. Au fil du temps, le terme a connu une
+         évolution sémantique, passant de la désignation d'un son désagréable à celle d'un son fort et discordant, pour s'imposer 
+         finalement dans le vocabulaire scientifique. Dans le contexte actuel, le terme noise ou bruit représente avec exactitude 
+         la notion de perturbation aléatoire, parasite et généralement indésirable, notamment dans les domaines de l'acoustique, 
+         du traitement du signal et de l'électronique.</p>
+    </section>
+
+    <section>
+      <h2>Catégories de Bruit</h2>
+        <p>Le bruit est un phénomène physique aléatoire présent dans de nombreux systèmes naturels. Dans le cadre de la production d'un bruit réellement aléatoire, nous utilisons des générateurs basés sur des processus physiques imprévisibles, tels que la radioactivité, les fluctuations thermiques ou le comptage de photons. Ces générateurs, dits physiques ou TRNG (True Random Number Generators), sont particulièrement utilisés dans les secteurs sensibles, comme la cryptographie ou la sécurité informatique. À l'inverse, dans les contextes scientifiques, techniques ou artistiques où la reproductibilité est souhaitée, on utilise des générateurs de nombres pseudo-aléatoires ou PRNG (Pseudo-Random Number Generators). Ces derniers produisent des séquences de nombres qui imitent l'aléatoire, mais sont en réalité entièrement déterminées par des algorithmes mathématiques. Bien que ces séquences soient prévisibles une fois leur source identifiée, elles offrent une solution efficace pour générer du bruit dans un large éventail d'applications informatiques.</p>
+      <p>On distingue donc deux grandes familles :</p>
+      <ul>
+        <li><strong>Bruit réel (TRNG)</strong> : généré à partir de phénomènes physiques (radioactivité, bruit thermique). Utilisé en sécurité et cryptographie.</li>
+        <li><strong>Bruit pseudo-aléatoire (PRNG)</strong> : généré par des algorithmes déterministes. Reproductible, utilisé en simulation, modélisation ou création artistique.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Typologie spectrale</h2>
+      <p>Selon leur spectre de fréquence, on distingue :</p>
+      <ul>
+        <li><strong>Bruit blanc</strong> : puissance constante à toutes les fréquences.</li>
+        <li><strong>Bruit rose</strong> : puissance décroît comme 1/f.</li>
+        <li><strong>Bruit brun (brownien)</strong> : décroissance 1/f².</li>
+        <li><strong>Bruit rouge</strong> : encore plus atténué dans les hautes fréquences.</li>
+      </ul>
+      <p>On peut aussi classer les bruits selon leur distribution statistique : uniforme, gaussienne, etc.</p>
+    </section>
+
+    <section>
+      <h2>Les différents types de bruit</h2>
+      <div class="audio-container">
+        <h3>Bruit blanc</h3>
+        <p>Contient toutes les fréquences avec la même intensité. Utilisé comme référence dans l’analyse des signaux et en audio.</p>
+        <audio controls>
+          <source src="audios/bruit_blanc.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-container">
+        <h3>Bruit rose</h3>
+        <p>Contient plus d'énergie dans les basses fréquences (puissance décroît comme 1/f). Utilisé pour le traitement audio et les systèmes biologiques.</p>
+        <audio controls>
+          <source src="audios/bruit_rose.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-container">
+        <h3>Bruit de Perlin</h3>
+        <p>Bruit à gradients, lisse et dérivable. Idéal pour générer des textures naturelles ou des sons doux et évolutifs.</p>
+        <audio controls>
+          <source src="audios/bruit_perlin.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-container">
+        <h3>Velvet Noise</h3>
+        <p>Bruit impulsionnel parcimonieux, très utilisé en synthèse de réverbérations.</p>
+        <audio controls>
+          <source src="audios/velvet_noise.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </section>
+
+    <section>
+      <h2>Générateurs de Bruit Pseudo-Aléatoire</h2>
+      <p>Les PRNG imitent le hasard à l’aide d’algorithmes déterministes :</p>
+      <ul>
+        <li><strong>LCG</strong> : simple récurrence modulaire. Faible sécurité.</li>
+        <li><strong>LFSR</strong> : registre à décalage utilisant des XOR, utilisé en matériel embarqué.</li>
+        <li><strong>Mersenne Twister</strong> : grande période (2^19937-1), utilisé par défaut dans de nombreux langages.</li>
+        <li><strong>CSPRNG</strong> : conçu pour la sécurité, utilise des primitives cryptographiques.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Pipeline du Mersenne Twister (MT19937)</h2>
+      <ol>
+        <li><strong>Initialisation :</strong> avec une graine, 624 entiers sont générés.</li>
+        <li><strong>Tableau d’état :</strong> mis à jour selon une récurrence linéaire modulo 2.</li>
+        <li><strong>Twist :</strong> mélange des bits avec des décalages et masques.</li>
+        <li><strong>Tempering :</strong> ajustement des bits pour améliorer la distribution.</li>
+        <li><strong>Sortie :</strong> un entier de 32 bits pseudo-aléatoire.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Bruit de Perlin</h2>
+      <p>Fonction continue définie sur une grille. Chaque point de la grille a un gradient pseudo-aléatoire et les valeurs sont interpolées via une fonction de lissage. Utilisé en synthèse d’images et sons naturels.</p>
+    </section>
+
+    <section>
+      <h2>Velvet Noise</h2>
+      <p>Défini comme une suite discrète où seule une faible fraction des échantillons sont non-nuls (+1 ou -1). Très économique en calcul, utilisé dans des applications en temps réel.</p>
+    </section>
+
+    <section>
+      <h2>Références</h2>
+      <ul>
+        <li>J. B. Johnson, "Thermal agitation of electricity in conductors", Physical Review, 1928</li>
+        <li>CNRTL - Étymologie du mot "bruit"</li>
+        <li>Alain Rey, Dictionnaire historique de la langue française</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
