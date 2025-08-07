@@ -4,32 +4,153 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Le Bruit et sa Génération</title>
-    <link rel="stylesheet" href="statics/style.css" />
+  <link rel="stylesheet" href="statics/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
 
 </head>
 <body>
   <header>
-    <h1>Le Bruit et sa Génération par Ordinateur</h1>
-    <p>Par Benjamin Tchitche – Université d'Angers<br/>Équipe ImHorPhen, LARIS</p>
+    <div class="logo">
+      <img src="statics/image/ImHorPhen.png" alt="Logo de l'Équipe ImHorPhen" />
+      <img src="statics/image/ua.png" alt="Logo de l'Université d'Angers" />
+    </div>
+    <div>
+      <h1>Le Bruit et sa Génération par Ordinateur</h1>
+    <p>Par Benjamin TCHITCHE , Francois CHAPEAU-BLONDEAU, Matthieu LOUMAIGNE , Pejman RASTI ,  David ROUSSEAU – Université d'Angers<br/>Équipe ImHorPhen, LARIS</p>
+
+    </div>
+    
+    
   </header>
 
   <main>
+    <div class="container">
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          Le bruit correspond à l'ensemble des perturbations aléatoires, généralement indésirables, qui s'ajoutent à un signal utile.
+          Il est un élément clé de la physique, de l'ingénierie et même de la biologie, où il est essentiel pour la compréhension des
+            fluctuations intrinsèques des systèmes. Selon la classification établie, les origines de ce phénomène peuvent être thermiques, électroniques, acoustiques ou biologiques. 
+            Dans le cadre de notre analyse, nous avons procédé à une modélisation mathématique du bruit. Cette modélisation s'est faite à l'aide d'un processus stochastique, 
+            qui nous a permis de démontrer rigoureusement la nature aléatoire fondamentale de ce dernier.
+        </p>
+        <p>L'étymologie du terme anglais noise, qui signifie « bruit », remonte à l'ancien français noise, 
+          signifiant « querelle » ou « tumulte ». Ce terme est lui-même dérivé du latin nausea, qui désignait à l'origine 
+          le mal de mer ou un état de trouble, avant de signifier une agitation confuse. Au fil du temps, le terme a connu une
+          évolution sémantique, passant de la désignation d'un son désagréable à celle d'un son fort et discordant, pour s'imposer 
+          finalement dans le vocabulaire scientifique. Dans le contexte actuel, le terme noise ou bruit représente avec exactitude 
+          la notion de perturbation aléatoire, parasite et généralement indésirable, notamment dans les domaines de l'acoustique, 
+          du traitement du signal et de l'électronique.</p>
+      </section>
+
+    <!-- À insérer après la dernière section existante, avant </main> -->
+
     <section>
-      <h2>Introduction</h2>
+      <h2>Origines physiques du bruit</h2>
       <p>
-        Le bruit correspond à l'ensemble des perturbations aléatoires, généralement indésirables, qui s'ajoutent à un signal utile.
-         Il est un élément clé de la physique, de l'ingénierie et même de la biologie, où il est essentiel pour la compréhension des
-          fluctuations intrinsèques des systèmes. Selon la classification établie, les origines de ce phénomène peuvent être thermiques, électroniques, acoustiques ou biologiques. 
-          Dans le cadre de notre analyse, nous avons procédé à une modélisation mathématique du bruit. Cette modélisation s'est faite à l'aide d'un processus stochastique, 
-          qui nous a permis de démontrer rigoureusement la nature aléatoire fondamentale de ce dernier.
+        Le bruit trouve son origine dans de nombreux phénomènes physiques fondamentaux. Parmi les principales sources, on distingue :
       </p>
-      <p>L'étymologie du terme anglais noise, qui signifie « bruit », remonte à l'ancien français noise, 
-        signifiant « querelle » ou « tumulte ». Ce terme est lui-même dérivé du latin nausea, qui désignait à l'origine 
-        le mal de mer ou un état de trouble, avant de signifier une agitation confuse. Au fil du temps, le terme a connu une
-         évolution sémantique, passant de la désignation d'un son désagréable à celle d'un son fort et discordant, pour s'imposer 
-         finalement dans le vocabulaire scientifique. Dans le contexte actuel, le terme noise ou bruit représente avec exactitude 
-         la notion de perturbation aléatoire, parasite et généralement indésirable, notamment dans les domaines de l'acoustique, 
-         du traitement du signal et de l'électronique.</p>
+      <ul>
+        <li><strong>Bruit thermique (ou bruit de Johnson-Nyquist)</strong> : dû à l’agitation thermique des porteurs de charge dans un conducteur. Sa densité spectrale de puissance est donnée par :
+          <br>
+          <span style="display:block; margin:0.5em 0; font-family:monospace;">
+          \[S_V(f) = 4 k_B T R \]
+          </span>
+          où \( k_B\)est la constante de Boltzmann, \(T\) la température absolue, et \(R\) la résistance.
+        </li>
+        <li><strong>Bruit de grenaille (ou bruit de Schottky)</strong> : lié à la nature discrète du transport de charge (électrons, photons). Sa densité spectrale de courant est :
+          <br>
+          <span style="display:block; margin:0.5em 0; font-family:monospace;">
+          \[S_I(f) = 2 q I\]
+          </span>
+          où <em>q</em> est la charge élémentaire et \(I\) le courant moyen.
+        </li>
+        <li><strong>Bruit de génération-recombinaison</strong> : présent dans les semi-conducteurs, dû aux transitions aléatoires entre états d’énergie.</li>
+        <li><strong>Bruit \(1/f\) (ou bruit de flicker)</strong> : caractérisé par une densité spectrale de puissance décroissant comme \(1/f\).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Classification du bruit</h2>
+      <p>
+        Le bruit peut être classé selon plusieurs critères :
+      </p>
+      <ul>
+        <li><strong>Selon l’origine :</strong> physique (thermique, quantique), électronique, environnemental, biologique.</li>
+        <li><strong>Selon la statistique :</strong> bruit gaussien, bruit uniforme, bruit impulsionnel.</li>
+        <li><strong>Selon le spectre :</strong>
+          <ul>
+            <li>Bruit blanc : spectre plat.</li>
+            <li>Bruit rose : spectre \( \propto 1/f\).</li>
+            <li>Bruit brun : spectre \( \propto 1/f^2\).</li>
+            <li>Bruit bleu, violet, etc.</li>
+          </ul>
+        </li>
+        <li><strong>Selon la temporalité :</strong> stationnaire, non stationnaire.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Mesure et traitement du bruit</h2>
+      <p>
+        La mesure du bruit s’effectue à l’aide d’instruments adaptés (voltmètre efficace, analyseur de spectre, sonomètre). Les grandeurs caractéristiques sont :
+      </p>
+      <ul>
+        <li><strong>Valeur efficace (RMS)</strong> :</li>
+      </ul>
+      <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[V_{RMS} = \sqrt{ \langle v^2(t) \rangle }\]
+      </span>
+      <ul>
+        <li><strong>Densité spectrale de puissance</strong> :</li>
+      </ul>
+      <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[S(f) = \lim_{T \to \infty} \frac{1}{T} | \tilde{v}(f) |^2\]
+      </span>
+      <p>
+        Le traitement du bruit vise à réduire son impact ou à l’extraire d’un signal utile. Les méthodes incluent :
+      </p>
+      <ul>
+        <li>Filtrage (passe-bas, passe-bande, etc.)</li>
+        <li>Moyennage temporel ou spatial</li>
+        <li>Techniques de débruitage (transformée de Fourier, ondelettes, etc.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Applications positives du bruit</h2>
+      <p>
+        Si le bruit est souvent considéré comme une nuisance, il possède aussi des applications bénéfiques :
+      </p>
+      <ul>
+        <li><strong>Stimulation stochastique</strong> : amélioration de la détection de signaux faibles par ajout de bruit (stochastic resonance).</li>
+        <li><strong>Cryptographie</strong> : génération de clés aléatoires à partir de bruit physique.</li>
+        <li><strong>Simulation et modélisation</strong> : bruit utilisé pour simuler des phénomènes naturels ou des incertitudes.</li>
+        <li><strong>Création artistique</strong> : bruit sonore ou visuel pour la synthèse d’ambiances, textures, etc.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Processus de génération de bruit</h2>
+      <p>
+        La génération de bruit peut se faire par :
+      </p>
+      <ul>
+        <li><strong>Sources physiques</strong> : diodes, résistances, tubes photomultiplicateurs, etc.</li>
+        <li><strong>Algorithmes numériques</strong> : générateurs pseudo-aléatoires (PRNG), bruit de Perlin, bruit simplex, etc.</li>
+      </ul>
+      <p>
+        Exemple de génération numérique d’un bruit blanc gaussien :
+      </p>
+      <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[x_i = \sqrt{-2 \ln(u_1)} \cos(2\pi u_2)\]
+      </span>
+      <p>
+        où \(u_1\) et \(u_2\) sont deux variables aléatoires uniformes sur \([0,1]\) (méthode de Box-Muller).
+      </p>
     </section>
 
     <section>
@@ -41,102 +162,171 @@
         <li><strong>Bruit pseudo-aléatoire (PRNG)</strong> : généré par des algorithmes déterministes. Reproductible, utilisé en simulation, modélisation ou création artistique.</li>
       </ul>
     </section>
-
     <section>
-      <h2>Typologie spectrale</h2>
-      <p>Selon leur spectre de fréquence, on distingue :</p>
-      <ul>
-        <li><strong>Bruit blanc</strong> : puissance constante à toutes les fréquences.</li>
-        <li><strong>Bruit rose</strong> : puissance décroît comme 1/f.</li>
-        <li><strong>Bruit brun (brownien)</strong> : décroissance 1/f².</li>
-        <li><strong>Bruit rouge</strong> : encore plus atténué dans les hautes fréquences.</li>
-      </ul>
-      <p>On peut aussi classer les bruits selon leur distribution statistique : uniforme, gaussienne, etc.</p>
+      <h2>Générateurs de Bruit Pseudo-Aléatoire</h2>
+      <p>Les générateurs pseudo-aléatoires produisent des séquences de nombres imitant le hasard, mais basées
+        sur des algorithmes déterministes. Ils sont essentiels en simulation, modélisation, graphisme et audio.
+        Voici les principaux :</p>
+
+      <div class="subsection">
+        <h3><strong>Générateur Congruentiel Linéaire (LCG)</strong></h3>
+        <p>Bien qu’ils soient simples et rapides, leur faible complexité les rend peu adaptés
+        aux applications exigeantes, notamment en cryptographie.
+        Ils sont basés sur la formule :</p>
+        <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[X_{n+1} = (a X_n + c) \mod m\]
+        </span>
+        <p>où \(X_n\) est l'état actuel, \(a\) est le multiplicateur, \(c\) l'incrément et \(m\) le module.
+        La période maximale est \(m\), mais elle est souvent bien inférieure.</p>
+      </div>
+
+      <div class="subsection">
+        <h3><strong>Registre à Décalage à Rétroaction Linéaire (LFSR)</strong></h3>
+        <p>Utilisé en matériel embarqué, il est basé sur des opérations de décalage et de XOR.
+        Il génère des séquences pseudo-aléatoires avec une période maximale de \(2^n - 1\), où \(n\) est la taille du registre.</p>
+        <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[X_{n+1} = X_n \oplus (X_n >> k)\]
+        </span>
+        <p>où \(k\) est le nombre de bits de décalage.</p>
+      </div>  
+      <div class="subsection">
+        <h3><strong>Mersenne Twister (MT19937)</strong></h3>
+        <p>Un des générateurs les plus utilisés, il a une période de \(2^{19937} - 1\) et est basé sur des opérations de bitwise.
+        Il utilise un tableau d'état de 624 entiers pour produire des nombres pseudo-aléatoires.</p>
+        <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[X_{n+1} = (X_n \oplus (X_n >> 1)) \oplus (X_n >> 2)\]
+        </span>
+        <p>Il est connu pour sa bonne distribution et sa rapidité.</p>
+      </div>
+
+      <div class="subsection">
+        <h3><strong>Générateur de Nombres Aléatoires Cryptographiquement Sécurisés (CSPRNG)</strong></h3>
+        <p>Conçu pour la sécurité, il utilise des primitives cryptographiques pour générer des nombres aléatoires.
+        Il est essentiel dans les applications nécessitant une forte sécurité, comme la cryptographie.</p>
+        <span style="display:block; margin:0.5em 0; font-family:monospace;">
+        \[X_{n+1} = H(X_n)\]
+        </span>
+        <p>où \(H\) est une fonction de hachage cryptographique.</p>
+      </div>
+      
     </section>
+
 
     <section>
       <h2>Les différents types de bruit</h2>
-      <div class="audio-container">
-        <h3>Bruit blanc</h3>
+      <h3>Bruit blanc</h3>
         <p>Contient toutes les fréquences avec la même intensité. Utilisé comme référence dans l’analyse des signaux et en audio.</p>
+        <div class="img-contentainer">
+          <img src="statics/image/uniforme.png" alt="bruit blanc" />
+          <img src="statics/image/uniforme hist.png" alt="Spectre du bruit blanc" />
+
+        </div>
+      <div class="audio-container">
+        
         <audio controls>
-          <source src="audios/white.wav" type="audio/mpeg">
+          <source src="statics/audios/white.wav" type="audio/mpeg">
         </audio>
       </div>
+
+      <h3>Bruit rose</h3>
+        <p>Contient plus d'énergie dans les basses fréquences (puissance décroît comme 1/f). Utilisé pour le traitement audio et les systèmes biologiques.</p>
+       
+          <div>
+            <p>Dans le bruit rose, l'énergie est égale par octave de fréquence. 
+              L'énergie du bruit rose à chaque niveau de fréquence diminue toutefois d'environ 3 dB par octave. 
+              C'est le contraire du bruit blanc, qui a la même énergie à tous les niveaux de fréquence
+            </p>
+          </div>
 
       <div class="audio-container">
-        <h3>Bruit rose</h3>
-        <p>Contient plus d'énergie dans les basses fréquences (puissance décroît comme 1/f). Utilisé pour le traitement audio et les systèmes biologiques.</p>
         <audio controls>
-          <source src="audios/bruit_rose.mp3" type="audio/mpeg">
+          <source src="./statics/audios/Pink_noise.wav" type="audio/mpeg">
         </audio>
       </div>
-
+      <h3>Bruit brun (brownien)</h3>
+        <p>Énergie décroît comme \(1/f^2\). Utilisé en modélisation de phénomènes naturels et en audio pour des sons plus graves.</p>
         <div class="audio-container">
-            <h3>Bruit brun (brownien)</h3>
-            <p>Énergie décroît comme 1/f². Utilisé en modélisation de phénomènes naturels et en audio pour des sons plus graves.</p>
+            
             <audio controls>
-            <source src="audios/red.wav" type="audio/mpeg">
+            <source src="statics/audios/red.wav" type="audio/mpeg">
             </audio>
         </div>
 
-      <div class="audio-container">
+    </section>
+
+    
+    <h2>Autres formes de bruit</h2>
+    <p>Il existe des formes de bruit particulier. Par exemple, le bruit de Perlin et le Velvet Noise. Ce
+sont à la fois une méthode de génération et un type de bruit spécifique. Ils possèdent des
+propriétés particulières.</p>
+
+    <section>
+      <h3>Bruit de Perlin</h3>
+      <p>Le bruit de Perlin a été inventé par Ken Perlin en 1983 pour générer des textures naturelles dans les effets spéciaux. 
+        Il permet d'obtenir un bruit lisse qui évite l'aspect granuleux du bruit blanc. Contrairement au bruit blanc, 
+        le bruit de Perlin est continu et possède une dérivée continue, donnant une apparence ou un son beaucoup plus naturel.
+        L'algorithme de génération du bruit de Perlin suit les trois grandes étapes qui suivent :
+        <ol>
+          <li><strong>Génération d'une grille de gradients pseudo-aléatoires</strong> : On associe à chaque point entier d'une grille un vecteur de gradient choisi pseudo-aléatoirement.</li>
+          <li><strong>Calcul des produits scalaires</strong> : Pour chaque point à interpoler, on calcule le produit scalaire entre le vecteur de gradient de chaque coin de la cellule et le vecteur allant de ce coin au point considéré.
+          \[\text{influence}(p_i) = g(p_i) \cdot (P - p_i)\] 
+          où \(g(p_i)\) est le gradient au point \(p_i\) et \(P\) est le point à interpoler.</li>
+          <li><strong>Interpolation des produits scalaires</strong> : On interpole ces produits scalaires en utilisant une interpolation lissée, souvent une interpolation de type "fade" (\( \text{fade}(t) = 6t^5 - 15t^4 + 10t^3\)) pour obtenir une transition douce entre les valeurs. 
+          \[\text{Perlin}(p) = (1 - \text{fade}(t)) \times \text{influence}(p_0) + \text{fade}(t) \times \text{influence}(p_1)\]
+        </ol>
+        
+
+      </p>
+      <div class="images-container">
+        <img src="statics/image/perlin vs white .png" alt="Bruit de Perlin" />
+      </div>
+       <div class="audio-container">
         <h3>Bruit de Perlin</h3>
-        <p>Bruit à gradients, lisse et dérivable. Idéal pour générer des textures naturelles ou des sons doux et évolutifs.</p>
         <audio controls>
-          <source src="audios/perlin.waw" type="audio/mpeg">
+          <source src="statics/audios/perlin.wav" type="audio/mpeg">
         </audio>
       </div>
-
-      <div class="audio-container">
-        <h3>Velvet Noise</h3>
-        <p>Bruit impulsionnel parcimonieux, très utilisé en synthèse de réverbérations.</p>
-        <audio controls>
-          <source src="audios/velvet.wav" type="audio/mpeg">
-        </audio>
-      </div>
-    </section>
-
-    <section>
-      <h2>Générateurs de Bruit Pseudo-Aléatoire</h2>
-      <p>Les PRNG imitent le hasard à l’aide d’algorithmes déterministes :</p>
-      <ul>
-        <li><strong>LCG</strong> : simple récurrence modulaire. Faible sécurité.</li>
-        <li><strong>LFSR</strong> : registre à décalage utilisant des XOR, utilisé en matériel embarqué.</li>
-        <li><strong>Mersenne Twister</strong> : grande période (2^19937-1), utilisé par défaut dans de nombreux langages.</li>
-        <li><strong>CSPRNG</strong> : conçu pour la sécurité, utilise des primitives cryptographiques.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Pipeline du Mersenne Twister (MT19937)</h2>
-      <ol>
-        <li><strong>Initialisation :</strong> avec une graine, 624 entiers sont générés.</li>
-        <li><strong>Tableau d’état :</strong> mis à jour selon une récurrence linéaire modulo 2.</li>
-        <li><strong>Twist :</strong> mélange des bits avec des décalages et masques.</li>
-        <li><strong>Tempering :</strong> ajustement des bits pour améliorer la distribution.</li>
-        <li><strong>Sortie :</strong> un entier de 32 bits pseudo-aléatoire.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Bruit de Perlin</h2>
-      <p>Fonction continue définie sur une grille. Chaque point de la grille a un gradient pseudo-aléatoire et les valeurs sont interpolées via une fonction de lissage. Utilisé en synthèse d’images et sons naturels.</p>
-    </section>
+      </section>
 
     <section>
       <h2>Velvet Noise</h2>
-      <p>Défini comme une suite discrète où seule une faible fraction des échantillons sont non-nuls (+1 ou -1). Très économique en calcul, utilisé dans des applications en temps réel.</p>
+      <p>Le velvet noise est un train d'impulsions positives et négatives aléatoires d'une seule longueur d'échantillon. D'un point de vue numérique, il s'agit d'une séquence aléatoire des trois valeurs suivantes : -1, 0 et 1.
+Le taux (et donc la densité) du bruit peut être contrôlé en modifiant la probabilité de génération d'une valeur zéro.
+
+$$v[n] = \left\{\begin{array}{ll}
+    \pm 1 & \text{avec prob p}  \\
+    0 &  \text{avec prob (1-p)}  
+\end{array} \right.$$
+
+        Le velvet noise est souvent utilisé dans la synthèse de réverbérations, car il permet de simuler des réflexions sonores naturelles. Il est également utilisé dans les applications audio pour créer des effets de texture et de profondeur.
+        Sa caractéristique principale est sa parcimonie, c'est-à-dire qu'il contient peu d'impulsions par rapport à un bruit blanc, ce qui le rend plus doux et moins agressif à l'oreille.
+      </p>
+      <div class="images-container">
+        <img src="statics/image/velvet.png" alt="Velvet Noise" />
+      </div>
+      
+      <div class="audio-container">
+        <h3>Velvet Noise</h3>
+        <audio controls>
+          <source src="statics/audios/velvet.wav" type="audio/mpeg">
+        </audio>
+      </div>
+
+</p>
     </section>
 
     <section>
       <h2>Références</h2>
       <ul>
-        <li>J. B. Johnson, "Thermal agitation of electricity in conductors", Physical Review, 1928</li>
-        <li>CNRTL - Étymologie du mot "bruit"</li>
-        <li>Alain Rey, Dictionnaire historique de la langue française</li>
+        <li>John B Johnson. “Thermal agitation of electricity in conductors”. In : Physical Review 32.1 (1928), p. 97-109.</li>
+        <li>TLFi. Trésor de la Langue Française informatisé. Last accessed 12 Jun 2025. url : https://www.cnrtl.fr/etymologie/bruit.</li>
+        <li>Wikipedia contributors. “Musique bruitiste”. In : Wikipedia, url : <a href="https://fr.wikipedia.org/wiki/Musique_bruitiste">https://fr.wikipedia.org/wiki/Musique_bruitiste</a>
+        <li>Harry Nyquist. “Thermal agitation of electric charge in conductors”. In : Physical Review 32.1 (1928), p. 110-113.</li>
+        <li>Leon Cohen. “The history of noise [on the 100th anniversary of its birth]”. In: IEEE Signal Processing Magazine 22.6 (2005), pp. 20–45</li>
+        
       </ul>
     </section>
+    </div>
   </main>
 </body>
 </html>
